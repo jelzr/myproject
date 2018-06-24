@@ -74,8 +74,53 @@ $(function(){
 			oBanner.onmouseout = function(){
 				time = setInterval(function(){
 					move()
-				},2000)
+				},4000)
 			}
+			
+//main6
+$("#main6_bottom #main6_left").find("li").hover(function(){
+	$(this).addClass('hover').siblings().removeClass("hover");
+	var $index = $(this).index();
+	
+	$(".main6_right").eq($index).addClass("hover").siblings().removeClass("hover");
+});
+
+$("#dg_link_1_box  a:gt(23)").css("border-bottom","1px solid #eee"); 
+
+
+//搜索框
+
+
+//点击搜索li的地址  http://www.yougou.com/sr/searchKey.sc?keyword=%E9%98%BF%E8%BF%AA
+//var url = "www.yougou.com/ssc/suggest.sc?term=a";
+
+
+$("#search").on("input",function(){ 
+	var value = $(this).val();
+	var url =  "http://www.yougou.com/ssc/suggest.sc?term="+value+"";
+	/*console.log(url);   	
+	$.getJSON(url,function(data){
+		
+			console.log(data);
+	}) */
+   $.ajax(url,{
+        
+        dataType: 'jsonp',
+        crossDomain: true,
+        success: function(data) {
+          console.log("data"); 
+          
+            
+        } 
+});
+/*console.log($(this).val());
+	  
+	let oScript = document.createElement("script");
+	oScript.src ="http://www.yougou.com/ssc/suggest.sc?term="+value+";
+	document.body.appendChild(oScript);*/
+//function foo(data){
+//	console.log(data);
+//}
 })
 
 			
