@@ -2,7 +2,7 @@
 <html>
 	<head>
 		<meta charset="UTF-8">
-		<title>优购时尚商城-注册</title>
+		<title>优购网—用户手机号登录</title>
 		<script src="js/jquery-1.11.0.js" type="text/javascript" charset="utf-8"></script>
 		<script src="js/login.js" type="text/javascript" charset="utf-8"></script>
 		<link rel="stylesheet" type="text/css" href="css/login.css"/>
@@ -66,110 +66,58 @@
 			</div>
 			
 		</div>
-<!--register-logo-->		
+<!--login-logo-->		
 		<div id="lg_logo_wrap"> 
 			<div id="lg_logo">
 				<a href=""><img src="img/login-logo.png"/></a>
-				<p>新用户注册</p>
+				<p>用户登录</p>
 			</div>
 		</div>
 		
-<!--regist-banner-->
+<!--login-banner-->
 <div id="lg_banner">
-	<div id="rg_box">
-		<div id="rg_top">
-			<a href="login_psw.html" id="rg_top_lg">登陆</a>
-			<a href="" id="rg_top_rg">注册</a>
+	<div id="login">
+		<div id="lg_top">
+			<a href="login_psw.html" class="psw lg_hover2">账号密码登录</a>
+			<a href="" class="tel lg_hover1" >手机号快捷登录</a>
 		</div>
-		<div id="rg_form">
-			
-			<div id="rg_ass" class="rg_b rg_m">
-				<div id="xiala">
-					<strong><a href="" id="sj1">手机号</a></strong>
-					<strong id="qh"></strong> 
-					<div id="xiala_a">
-						<strong id="sj">手机号</strong>
-						<strong id="qh"></strong>
-						<div id="mail">邮箱</div>
-					</div>
-				</div>
-				
-				<input type="text" name="rg_1" id="rg_1" placeholder="请输入您的手机号"/>
+		<div id="lg_form">
+			<div id="lg_ass">
+				<strong>手机号</strong>
+				<input type="text" name="lg_1" id="lg_3" placeholder="请输入您的手机号"/>
 			</div>
-			<div id="rg_ass_xinxi_wrap">
-				<div id="rg_ass_xinxi">
-				
-				</div> 
-			</div>
-			<div id="rg_psw_mobile" class="rg_b rg_psw">
-				<div id="rg_psw_mobile1">
-					<span>验证码</span>
-					<input type="text" name="rg_2" id="rg_2" />
-				</div>
-				<strong id="yzm"><img src="img/yzm.png"/></strong>
-			</div>
-			<div id="rg_psw_xinxi_wrap"> 
-				<div id="rg_psw_xinxi"> 
+			<div id="lg_ass_xinxi_wrap">
+				<div id="lg_ass_xinxi">
 				
 				</div>
-			</div>						
-			<div id="rg_psw_mobile"  class="rg_b rg_remove">
-				<div id="rg_psw_mobile1">
+			</div>
+			<div id="lg_psw_mobile">
+				<div id="lg_psw_mobile1">
 					<span>短信验证码</span>
-					<input type="text" name="rg_3" id="rg_3"/>
+					<input type="text" name="lg_2" id="lg_4" />
 				</div>
 				<strong>获取验证码</strong>
-			</div>  
-			<div id="rg_psw_xinxi_wrap" class=" rg_remove"> 
-				<div id="rg_psw_xinxi" class="rgaa">
+			</div>
+			<div id="lg_psw_xinxi_wrap"> 
+				<div id="lg_psw_xinxi">
 				
 				</div>
 			</div>
-		
-			<div id="rg_ass" class="rg_psw_2 rg_b">
-				<strong>密码</strong>
-				<input type="text" name="rg_4" id="rg_4" placeholder="字母数字、符号均可，6-25个字符以内"/>
-			</div>
-			<div id="rg_ass_xinxi_wrap">
-				<div id="rg_ass_xinxi" class="rgbb">
-				 
-				</div>
-			</div>
-			
-			
-			<div id="rg_ass" class="rg_psw_2 rg_b">
-				<strong>确认密码</strong>
-				<input type="text" name="rg_5" id="rg_5"/>
-			</div>
-			<div id="rg_ass_xinxi_wrap">
-				<div id="rg_ass_xinxi" class="rgcc">
-				
-				</div>
-			</div>
-			
-		<p>
-			<input type="checkbox" name="" id="" value="" checked="checked"/>
-			我已阅读并同意
-			<a href="">《优购会员注册协议》</a>
-		</p>	
-			
-		<input type="submit" name="rg_btn" id="rg_btn" value="确认并注册" />	
-			
-			
-			
-			
-			
-			
+			<p>
+				<a href="">忘记密码？</a>
+			</p>
+			<input type="submit" name="lg_btn" id="lg_btn" value="点击登录" />
+			<p>使用合作网站账号登录优购：</p>
+			<ul>
+				<li><a href="" class="lg_mobile_wc"></a>|</li>
+				<li><a href=""></a>|</li>
+				<li><a href=""></a>|</li>
+				<li><a href=""></a>|</li>
+				<li><a href=""></a></li>
+			</ul>
 		</div>
 	</div>
 </div>
-
-
-
-
-
-
-
 <p class="login_footer">Copyright © 2011-2014 Yougou Technology Co., Ltd.
 	<a href=""> 粤ICP备09070608号-4 </a>
 	增值电信业务经营许可证：

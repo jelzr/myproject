@@ -98,29 +98,53 @@ $(function () {
 	//点击搜索li的地址  http://www.yougou.com/sr/searchKey.sc?keyword=%E9%98%BF%E8%BF%AA
 	//var url = "www.yougou.com/ssc/suggest.sc?term=a";
 
-
-	$("#search").on("input", function () {
-		var value = $(this).val();
-	var url =  "http://www.yougou.com/ssc/suggest.sc?term="+value+"";
-	/*console.log(url);   	
-	$.getJSON(url,function(data){
-		
-			console.log(data);
-	}) */
-   $.ajax(url, {
-        
-        dataType: 'jsonp',
-        crossDomain: true,
-        success: function(data) {
-          console.log("data"); 
-          
-            
-        }
+	/*
+ $("#search").on("input",function(){ 
+ 	var value = $(this).val();
+ 	var url =  "http://www.yougou.com/ssc/suggest.sc?term="+value+"";
+ 	console.log(url);   	
+ 	$.getJSON(url,function(data){
+ 		
+ 			console.log(data);
+ 	})  
+    $.ajax({ 
+         url:"http://datainfo.duapp.com/shopdata/selectGoodes.php?callback=?",
+         dataType: 'jsonp',
+         crossDomain: true,
+         success: function(data) {
+           console.log(data); 
+                    
+         } 
+     }); 
+ });*/
+	/*console.log($(this).val());
  	  
- 	/*let oScript = document.createElement("script");
+ 	let oScript = document.createElement("script");
  	oScript.src ="http://www.yougou.com/ssc/suggest.sc?term="+value+";
  	document.body.appendChild(oScript);*/
 	//function foo(data){
 	//	console.log(data);
 	//}
+
+	/*
+ $("#search").on("input",function(){
+ 
+ 
+ ajax({
+ 	type:"get",
+ 	url:"http://datainfo.duapp.com/shopdata/selectGoodes.php",
+ 	//data:data,
+ 	fnSuccess:function (data){
+ 		console.log(data);
+ 		console.log("aaa");
+ 	},
+ 	fnFail:function(){
+ 		console.log("bbb"); 
+ 		 
+ 	}
+ 	
+ })
+ 
+ })
+ */
 });

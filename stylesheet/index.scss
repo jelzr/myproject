@@ -100,9 +100,7 @@ $width:1190px;
                color:red;
            }
         }
-        
-        
-        strong{
+      strong{
             margin-top:8px ;
         }
     }
@@ -112,6 +110,7 @@ $width:1190px;
             height: 14px;
             color: red;
             padding: 0;
+            box-sizing: border-box;
             position: relative;
         }
 #nav_right>li:nth-of-type(2)>a{
@@ -122,16 +121,25 @@ $width:1190px;
             border-right: 1px solid #000;
             
         }
+       
 #shoucang{
     display: none;
-    width: 92px;
+    width: 90px;
     height: 32px;
     background: white;
     position: absolute;
-   
+    left:-1px;
 }
-#shoucang li a{  
-    width: 100%;       
+#shoucang li a{ 
+    display: block; 
+    width: 92px;
+    height: 32px;
+    line-height: 32px;
+    text-indent: 10px;
+    background: white;
+    position: absolute;
+   
+   padding: 0;      
     margin-top:0;
     color: #000000;
     border:1px solid #E3E3E5;
@@ -145,6 +153,7 @@ $width:1190px;
    background: white;
    
 }
+
 li.change{
     position: relative;
 }
@@ -156,7 +165,7 @@ li.change{
     position: absolute;
     border:1px solid #E3E3E5;
     border-top:none;  
-    right: 0;
+    right: -1px;
     top: 30px;
 }
 #gengduo{
@@ -167,7 +176,7 @@ li.change{
     position: absolute;
     border:1px solid #E3E3E5;
     border-top:none;  
-    right: 0;
+    right:-1px;
     top: 30px;
 }
 #gengduo li{
