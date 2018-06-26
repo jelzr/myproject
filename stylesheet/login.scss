@@ -105,10 +105,12 @@ $width:990px;
     }
 }
 #ewm {
+    z-index: 1;
      p{
          float: left;
        }
 }
+#gonggao,#gengduo{z-index: 1;}
 #apple{
     background: url(../img/app-rqcode.jpg) no-repeat -106px -9px;
 }
@@ -607,13 +609,14 @@ strong#qh{
     width: 71px;
     height: 36px;
     float: left;
-    cursor: pointer;
-    position: relative;
-   
-    background: white;
+    cursor: pointer;  
+    
     strong:hover{
         color: red;
     }
+}
+.rg_m{
+      position: relative;
 }
 #xiala_a{
     display: none;
@@ -622,7 +625,8 @@ strong#qh{
     position: absolute;
     top:-1px;
     left: -1px;
-     border: 1px dashed #e3e2e2;
+    border: 1px dashed #e3e2e2;
+    background: white;
     div{
         display: block;
         float: left;
@@ -634,7 +638,12 @@ strong#qh{
         padding-left:8px ;
         &:hover{
             color: red;
-        }
+        } 
+    }
+}
+#sj1,#sj{
+    &:hover{
+        color: red;
     }
 }
 #rg_psw_mobile1{

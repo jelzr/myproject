@@ -1,4 +1,14 @@
 $(function(){
+	//top
+	$("#top_nav li.change").mouseover(function(){
+		$(this).addClass("hover");
+		$(this).find("ul").css("display","block");
+	});
+	$("#top_nav li.change").mouseout(function(){
+		$(this).removeClass("hover");
+		$(this).find("ul").hide();
+	});
+	
 	
 	//账号登陆验证
 	$("#lg_1").on("blur",function(){ 
@@ -138,7 +148,7 @@ $(function(){
 		var val2 = $("#rg_4").val();
 		$.get("http://datainfo.duapp.com/shopdata/userinfo.php",{status:"login",userID:"val1",passward:"val2"},function(data){
 			if(data==0){
-				$("#rg_ass_xinxi").html("此 账 户 已 注 册 !!!");		
+				$("#rg_ass_xinxi").html("此  账  户  已   注  册   !   !    !");		
 			}else if(data==2){
 				$("#rg_ass_xinxi").html("出错");
 			}
@@ -148,16 +158,60 @@ $(function(){
 	})
 	
 	$("#xiala").on("click",function(){
-		$("#xiala_a").show());
-	})
+		$("#xiala_a").show();
+		
+	}) 
+	  
 	$("#mail").on("click",function(){
 		$(".rg_remove").hide();
-		$(this).parent().hide();
-		$("#sj1").html("邮箱");
-		$("#rg_1").placeholder("placeholder")
-	})
-	/*$("#sj").on("click",function(){
-		$(".rg_remove").css("display","block");
 		$("#xiala_a").hide();
-	})*/
+		$("#sj1").html("邮箱");
+		$("#rg_1").attr("placeholder","不建议填写Gmail、Hotmail、qq邮箱"); 
+		$("#yzm").find("img").attr("src","img/yzm1.png");
+		$("#rg_form div.rg_b").css("border-color","#e3e2e2");
+		$("#rg_psw_mobile1").css("border-color","#e3e2e2");
+		$("#rg_psw_xinxi").hide();
+		$("#rg_ass_xinxi").hide(); 
+		$("#rg_1").on("blur", function () {
+				$("#rg_ass_xinxi").show();
+				$("#rg_ass").css("border-color","red");		
+				var val = $(this).val();
+				var reg1 = /^[a-zA-Z]\w+@\w+(\.\w+)+$/;
+				if (val == "" || val == null) {
+					$("#rg_ass_xinxi").html("请输入邮箱");
+				} else if (reg1.test(val)) {
+					$("#rg_ass_xinxi").html("正确!");
+				} else {
+					$("#rg_ass_xinxi").html("格式错误");
+				}
+			});
+		$("#lg_btn").on("click",function(){
+		var val1 = $("#lg_1").val();
+		var val2 = $("#lg_2").val();
+		$.get("http://datainfo.duapp.com/shopdata/userinfo.php",{status:"login",userID:"val1",passward:"val2"},function(data){
+			if(data==0){
+				$("#lg_ass_xinxi").html("用 户 名 已 存 在  !  ! ");
+				
+			}else if(data==2){
+				$("#lg_psw_xinxi").show();
+				$("#lg_psw_xinxi").html("密码错误");  
+			}
+			
+		});
+		
+	})
+
+	})  
+	$("#sj").on("click",function(){ 
+		$("#xiala_a").hide(); 
+		$("#sj1").html("手机号");
+		$("#yzm").find("img").attr("src","img/yzm.png");
+		$("#rg_1").attr("placeholder","请输入你的手机号");  
+		$(".rg_remove").css("display","block");
+		$("#rg_form div.rg_b").css("border-color","#e3e2e2");
+		$("#rg_psw_mobile1").css("border-color","#e3e2e2");
+		$("#rg_psw_xinxi").hide();  
+		$("#rg_ass_xinxi").hide();
+		
+	})/**/
 })

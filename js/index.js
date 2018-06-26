@@ -1,30 +1,14 @@
-/*$.ajax({
-	type:"get",
-	url:"http://datainfo.duapp.com/shopdata/getGoods.php",
-	async:true,
-	success:function(data){
-		console.log(data);
-	}
-});*/
-$(function(){
+
+$(function(){   
 		$("#top_nav li.change").mouseover(function(){
-		//console.log("aaa");
 		$(this).addClass("hover");
 		$(this).find("ul").css("display","block");
 	});
 	$("#top_nav li.change").mouseout(function(){
-		//console.log("aaa");
 		$(this).removeClass("hover");
 		$(this).find("ul").hide();
 	});
-	/*$.ajax({
-	type:"get",
-	url:"http://datainfo.duapp.com/shopdata/getclass.php",
-	async:true,
-	success:function(data){
-		console.log(data);
-	}
-});*/
+	
 	//轮播
 	var oBanner = document.getElementById("banner_a");
 			var oUl = document.getElementById("_ul");			
@@ -76,7 +60,16 @@ $(function(){
 					move()
 				},4000)
 			}
-			
+$("#main1_lb_1").on("click",function(){
+	$(".main1_lunbo1,.main1_lunbo2").css("left","-980px")
+})
+$("#main1_lb_2").on("click",function(){
+	$(".main1_lunbo1,.main1_lunbo2").css("left","-0px")
+})
+
+
+
+
 //main6
 $("#main6_bottom #main6_left").find("li").hover(function(){
 	$(this).addClass('hover').siblings().removeClass("hover");
@@ -90,59 +83,121 @@ $("#dg_link_1_box  a:gt(23)").css("border-bottom","1px solid #eee");
 
 //搜索框
 
-
-//点击搜索li的地址  http://www.yougou.com/sr/searchKey.sc?keyword=%E9%98%BF%E8%BF%AA
-//var url = "www.yougou.com/ssc/suggest.sc?term=a";
-
-/*
-$("#search").on("input",function(){ 
-	var value = $(this).val();
-	var url =  "http://www.yougou.com/ssc/suggest.sc?term="+value+"";
-	console.log(url);   	
-	$.getJSON(url,function(data){
-		
+/*$("#search").on("input",function(){
+	var val = $(this).val();
+	console.log(val);
+	$.getJSON("http://datainfo.duapp.com/shopdata/selectGoodes.php?callback=?",{selectText:"val",pageCode:"0",linenumber:"20"},function(data){
 			console.log(data);
-	})  
-   $.ajax({ 
-        url:"http://datainfo.duapp.com/shopdata/selectGoodes.php?callback=?",
+			
+	}); 
+
+})*/
+
+
+$("#search").on("input",function(){
+	$("#search_list").show();
+	
+	var val = $(this).val();
+	$("#sousuo_1").click(function(){
+		$(this).attr("href","http://www.yougou.com/sr/searchKey.sc?keyword="+val+"")
+	})
+	
+	
+	var url = "https://suggest.taobao.com/sug?code=utf-8&q="+val+"&k=1&area=c2c&bucketid=13"
+      $.ajax(url, {
+        type:"post", 
         dataType: 'jsonp',
         crossDomain: true,
         success: function(data) {
-          console.log(data); 
-                   
-        } 
-    }); 
-});*/
-/*console.log($(this).val());
-	  
-	let oScript = document.createElement("script");
-	oScript.src ="http://www.yougou.com/ssc/suggest.sc?term="+value+";
-	document.body.appendChild(oScript);*/
-//function foo(data){
-//	console.log(data);
-//}
+        	let oTxt = document.getElementById("search");
+			let oList = document.getElementById("search_list");
+          	
+          	let data1 = data.result;
+					let str = "";
+					for(let i in data1){
+						str += "<li><a href='http://www.yougou.com/sr/searchKey.sc?keyword="+data1[i][0]+"'>"+data1[i][0]+"</a></li>";
+						oList.innerHTML = str;
+			
+					}	 
+				
+				
+				  }
+				}) 
+     
+      	    $("#search").on("blur",function(){
+      	    	$("#search_list li").on("click",function(){
+      	    		var value = $(this).text();
+      	    		console.log(value);
+      	    		$("#search").val(value);
+      	    		$("#search_list").hide();
+      	    	})
+			        
+			});  
 
-/*
-$("#search").on("input",function(){
+	});  
 
 
-ajax({
-	type:"get",
-	url:"http://datainfo.duapp.com/shopdata/selectGoodes.php",
-	//data:data,
-	fnSuccess:function (data){
-		console.log(data);
-		console.log("aaa");
-	},
-	fnFail:function(){
-		console.log("bbb"); 
-		 
+//商品列表
+$.get("http://datainfo.duapp.com/shopdata/getclass.php",function(data){
+	var data = JSON.parse(data);
+	console.log(data);
+	var str ="";
+	var str1 = "";
+	for(var i = 0;i<data.length;i++){
+		//console.log(data[i].className);	  
+		str+='<li><a href="">'+data[i].className+'</a></li>'
+		  
+	}  
+	for(var i =data.length-1;i>=0;i--){	  
+		str1 +='<li><a href="">'+data[i].className+'</a></li>'
+		  
 	}
+	
+	$(".list_first").on("mouseover",function(){ 
+		$(this).addClass("list_hover").siblings().removeClass("list_hover");
+		$(this).find(".bgt").css("background-position-x","-53px").parents(".list_first").siblings().find(".bgt").css("background-position-x","0px");
+		  
+		$(".list_first:even").find("ul").html(str);
+		$(".list_first:odd").find("ul").html(str1);
+		$(this).find("ul").show(); 
+		
+		$(this).on("mouseout",function(){
+			$(this).find("ul").hide();
+		})
+	})
+	$(".list_first").on("mouseout",function(){
+		$(this).find(".bgt").css("background-position-x","-52px");
+	})
+	
+	
 	
 })
 
-})
-*/
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//获取商品或列表
+/*$.getJSON("http://datainfo.duapp.com/shopdata/getGoods.php?callback=?",function(data){
+	console.log(data);
+	//console.log(JSON.parse(data));
+})*/
+
+
+
 
 })
 
