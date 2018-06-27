@@ -59,22 +59,25 @@ $(function(){
         
 	}); 
 	$("#lg_btn").on("click",function(){
-		var val1 = $("#lg_1").val();
-		var val2 = $("#lg_2").val();
-		$.get("http://datainfo.duapp.com/shopdata/userinfo.php",{status:"login",userID:"val1",passward:"val2"},function(data){
-			if(data==0){
-				$("#lg_ass_xinxi").html("用户名已存在");
-				
-			}else if(data==2){
-				$("#lg_psw_xinxi").show();
-				$("#lg_psw_xinxi").html("密码错误");  
-			}
-			
+		
+		$.get("http://datainfo.duapp.com/shopdata/userinfo.php",{status:"login",userID:$("#lg_1").val(),passward:$("#lg_2").val()},function(data){
+						data = JSON.parse(data);
+						//console.log(data);
+						if(data == 0){
+							$("#lg_ass_xinxi").html("用户名不存在");
+						}else if(data==2){
+							$("#lg_psw_xinxi").show();
+							$("#lg_psw_xinxi").html("用户名或者密码错误")
+						}else{
+							$.cookie("username",data.userID,{expires:7,path:"/"});
+							location.href = "index.html";
+						}
+						
 		});
 		
 	})
 	
-	
+//--------------------------------------------------------------
 	//注册验证
 	$("#rg_1").on("blur", function () {
 		$("#rg_ass_xinxi").show();
@@ -143,15 +146,18 @@ $(function(){
 	}); 
 	  
 		$("#rg_btn").on("click",function(){
-			console.log("aa");
-		var val1 = $("#rg_1").val();
-		var val2 = $("#rg_4").val();
-		$.get("http://datainfo.duapp.com/shopdata/userinfo.php",{status:"login",userID:"val1",passward:"val2"},function(data){
+			
+		$.get("http://datainfo.duapp.com/shopdata/userinfo.php",{status:"register",userID:$("#rg_1").val(),passward:$("#rg_4").val()},function(data){
+			data = JSON.parse(data);
+			
 			if(data==0){
-				$("#rg_ass_xinxi").html("此  账  户  已   注  册   !   !    !");		
-			}else if(data==2){
-				$("#rg_ass_xinxi").html("出错");
+				$("#rg_ass_xinxi").html("  用    户  名  重  名  !   !    !");		
+			}else if(data==1){
+				location.href = "login_psw.html";
+			}else{
+				$("#rg_ass_xinxi").html("注册失败，请重试  !");
 			}
+			
 			
 		});
 		
@@ -188,14 +194,23 @@ $(function(){
 		$("#lg_btn").on("click",function(){
 		var val1 = $("#lg_1").val();
 		var val2 = $("#lg_2").val();
-		$.get("http://datainfo.duapp.com/shopdata/userinfo.php",{status:"login",userID:"val1",passward:"val2"},function(data){
+		$.get("http://datainfo.duapp.com/shopdata/userinfo.php",{status:"register",userID:"val1",passward:"val2"},function(data){
+			console.log(data);
 			if(data==0){
-				$("#lg_ass_xinxi").html("用 户 名 已 存 在  !  ! ");
-				
-			}else if(data==2){
+				$("#rg_ass_xinxi").html("  用    户  名  重  名  !   !    !");		
+			}else if(data==1){
+				location.href = "login_psw.html";
+			}else{
 				$("#lg_psw_xinxi").show();
-				$("#lg_psw_xinxi").html("密码错误");  
+				$("#rg_psw_xinxi").html("注册失败，请重试");
 			}
+//			if(data==0){
+//				$("#lg_ass_xinxi").html("用 户 名 已 存 在  !  ! ");
+//				
+//			}else if(data==2){
+//				$("#lg_psw_xinxi").show();
+//				$("#lg_psw_xinxi").html("密码错误");  
+//			}
 			
 		});
 		
@@ -213,5 +228,5 @@ $(function(){
 		$("#rg_psw_xinxi").hide();  
 		$("#rg_ass_xinxi").hide();
 		
-	})/**/
+	})
 })

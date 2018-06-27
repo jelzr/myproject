@@ -6,3 +6,193 @@ a{text-decoration:none; color:#333;}
 h1,h2,h3,h4,h5,h6{font-weight:100;}
 body{ font-family:"微软雅黑";background: #f8f8f8;}
 input,a{outline:none;}
+
+#sp{
+    width: 1190px;
+    height: 605px;
+    //background: pink;  
+    margin: 0px auto;   
+}
+#sp_wrap{
+    width: 100%;
+    margin-top: 20px;
+} 
+.list_xq{
+    display: none;
+}
+
+#banner_1{
+    z-index: 1;
+    height:0;
+}
+//----商品列表--------------------------------
+#sp_list{
+    
+    width: 1190px;
+    height: auto;   
+    //background: antiquewhite;
+    margin: 0 auto;
+}
+.sp_1{
+    float: left;
+    width: 240px;
+    height: 320px;
+    margin: 25px;
+    border: 1px solid #939598;
+    cursor: pointer;
+    position: relative;
+    img{
+        display: block;
+        width: 240px;
+        height: 240px;
+        
+    }
+    a:nth-of-type(2){
+        display: block;
+        line-height: 20px; 
+        font-size: 12px;
+        color: #666;
+        margin-top: 5px;
+        &:hover{
+            color: red;
+        }
+    }
+    strong{
+        position: absolute;
+        bottom: 10px;
+        color: #e60012;
+    }
+}
+
+
+#dg_link_wrap,#links_wrap,#footer_wrap{
+    width: 100%;
+    float: left;
+      
+}
+#dg_link,#links,#footer_wrap{
+   margin: 0 auto;
+}
+
+//detail----------------------------------------------------
+#sp_wrap{
+    width: 100%;
+}
+#sp{
+    width: 1190px;
+    height: 605px;
+    margin:0 auto;
+    
+}
+#dt_left{
+    width: 500px;
+    height: 500px;
+    border: 1px solid #D1D3D4;
+    float: left;
+    position: relative;
+}
+.dt_img{
+    width: 500px;
+    height: 500px;
+    position: relative;
+   
+    img{
+        display: block;
+        width: 500px;
+        height: 500px;
+        
+    }
+}
+#zoom{
+    width: 200px;
+    height: 200px;
+    background: antiquewhite;
+    opacity: 0.5;
+    position: absolute;
+    cursor: move;
+    display: none;
+}
+.dt_img1{
+    width: 500px;
+    height: 500px;
+    position: absolute;
+    left: 550px;
+    top: -1px;
+//  display: none;
+    overflow: hidden;
+    border: 1px solid #D1D3D4;
+    img{
+        display: block;
+        width: 1250px;
+        height: 1250px;
+        //margin-left: 50px;
+        position: absolute;
+    }
+}
+.dt_right{
+    float: left;
+    margin-left:18px;
+    background: antiquewhite;
+    height: 500px;
+    h1{
+        font-size: 16px;
+        line-height: 28px;
+        color: #666;
+    }
+    strong{
+        font-size: 32px;
+        color: #e60012;
+    }
+}
+ 
+    #cart_2{
+        display: block;
+        float: left;
+        width: 147px;
+        height: 35px;
+        line-height: 35px;
+        background:#d90d0d ;
+        border: 1px solid #d90d0d;
+        color: white;
+        font-size: 16px; 
+        text-align: center;
+    }
+
+
+//cart --------------------------------------------------
+#cart_wrap{
+    width: 100%;
+}
+
+table{
+    
+    width: 998px;
+   height: auto;
+    margin:0 auto;
+    margin-left: 100px;
+    font-size: 12px;
+    border: 1px solid #000;
+    color: #666666;
+}
+
+
+tbody img{
+    display: block;
+    width: 60px;
+    height: 60px;
+    float: left;
+}
+tbody dd{
+    float: left;
+}
+#num{
+    width: 28px;
+    height: 24px;
+}
+.shop_title{
+    line-height: 20px;
+}
+
+
+
+

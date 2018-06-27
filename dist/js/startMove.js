@@ -1,8 +1,5 @@
 "use strict";
 
-//{opacity:70}
-//opacity:0.7 filter:alpha(opacity=70)
-
 function startMove(obj, json, fn) {
 	clearInterval(obj.timer);
 	obj.timer = setInterval(function () {
@@ -36,12 +33,13 @@ function startMove(obj, json, fn) {
 		//所有的样式都达到目标值之后才能清除定时器
 
 		if (flag) {
+
 			clearInterval(obj.timer);
 			if (fn) {
 				fn();
 			}
 		}
-	}, 30);
+	}, 10);
 }
 
 function getStyle(obj, attr) {

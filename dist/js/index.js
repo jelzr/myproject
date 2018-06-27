@@ -13,63 +13,76 @@ $(function () {
 	//轮播
 	var oBanner = document.getElementById("banner_a");
 	var oUl = document.getElementById("_ul");
-	var aList = oUl.children;
-	var len = aList.length;
-	var oImg1 = aList[0].offsetWidth;
-	oUl.style.width = oImg1 * len + "px";
-	var oUl1 = document.getElementById("_ul1");
-	var aList1 = oUl1.children;
-	var i = 0;
-	var time = setInterval(function () {
-		move();
-	}, 4000);
+	if (oUl !== null) {
+		var aList;
+		var len;
+		var oImg1;
+		var oUl1;
+		var aList1;
+		var i;
+		var time;
 
-	function move() {
-		i++;
-		if (i == len) {
-			oUl.style.left = 0;
-			i = 1;
-		}
-		if (i == -1) {
-			oUl.style.left = -oImg1 * (len - 1) + "px";
-			i = len - 2;
-		}
-		for (var j = 0; j < aList1.length; j++) {
-			aList1[j].className = "";
-		}
-		if (i == len - 1) {
-			aList1[0].className = "hover";
-		} else {
-			aList1[i].className = "hover";
-		}
-		startMove(oUl, { left: -oImg1 * i });
+		(function () {
+			var move = function move() {
+				i++;
+				if (i == len) {
+					oUl.style.left = 0;
+					i = 1;
+				}
+				if (i == -1) {
+					oUl.style.left = -oImg1 * (len - 1) + "px";
+					i = len - 2;
+				}
+				for (var j = 0; j < aList1.length; j++) {
+					aList1[j].className = "";
+				}
+				if (i == len - 1) {
+					aList1[0].className = "hover";
+				} else {
+					aList1[i].className = "hover";
+				}
+				startMove(oUl, { left: -oImg1 * i });
+			};
+
+			aList = oUl.children;
+			len = aList.length;
+			oImg1 = aList[0].offsetWidth;
+
+			oUl.style.width = oImg1 * len + "px";
+			oUl1 = document.getElementById("_ul1");
+			aList1 = oUl1.children;
+			i = 0;
+			time = setInterval(function () {
+				move();
+			}, 4000);
+
+			var _loop = function _loop(k) {
+				aList1[k].onmouseover = function () {
+					i = k - 1;
+					move();
+				};
+			};
+
+			for (var k = 0; k < aList1.length; k++) {
+				_loop(k);
+			}
+
+			oBanner.onmouseover = function () {
+				clearInterval(time);
+			};
+			oBanner.onmouseout = function () {
+				time = setInterval(function () {
+					move();
+				}, 3000);
+			};
+			$("#main1_lb_1").on("click", function () {
+				$(".main1_lunbo1,.main1_lunbo2").css("left", "-980px");
+			});
+			$("#main1_lb_2").on("click", function () {
+				$(".main1_lunbo1,.main1_lunbo2").css("left", "-0px");
+			});
+		})();
 	}
-
-	var _loop = function _loop(k) {
-		aList1[k].onmouseover = function () {
-			i = k - 1;
-			move();
-		};
-	};
-
-	for (var k = 0; k < aList1.length; k++) {
-		_loop(k);
-	}
-
-	oBanner.onmouseover = function () {
-		clearInterval(time);
-	};
-	oBanner.onmouseout = function () {
-		time = setInterval(function () {
-			move();
-		}, 4000);
-	};
-	$("#main1_lb_1").on("click", function () {
-		$(".main1_lunbo1,.main1_lunbo2").css("left", "-980px");
-	});
-	$("#main1_lb_2").on("click", function () {
-		$(".main1_lunbo1,.main1_lunbo2").css("left", "-0px");
-	});
 
 	//main6
 	$("#main6_bottom #main6_left").find("li").hover(function () {
@@ -129,26 +142,29 @@ $(function () {
 		});
 	});
 
-	//商品列表
+	//商品分类
 	$.get("http://datainfo.duapp.com/shopdata/getclass.php", function (data) {
 		var data = JSON.parse(data);
-		console.log(data);
+		//console.log(data);
 		var str = "";
 		var str1 = "";
 		for (var i = 0; i < data.length; i++) {
 			//console.log(data[i].className);	  
-			str += '<li><a href="">' + data[i].className + '</a></li>';
+			str += '<li><a href="list.html?classID=' + data[i].classID + '">' + data[i].className + '</a></li>';
 		}
 		for (var i = data.length - 1; i >= 0; i--) {
-			str1 += '<li><a href="">' + data[i].className + '</a></li>';
+			str1 += '<li><a href="list.html?classID=' + data[i].classID + '">' + data[i].className + '</a></li>';
 		}
+
+		$(".list_first:odd").find("ul").html(str1);
+		$(".list_first:even").find("ul").html(str);
 
 		$(".list_first").on("mouseover", function () {
 			$(this).addClass("list_hover").siblings().removeClass("list_hover");
 			$(this).find(".bgt").css("background-position-x", "-53px").parents(".list_first").siblings().find(".bgt").css("background-position-x", "0px");
 
-			$(".list_first:even").find("ul").html(str);
-			$(".list_first:odd").find("ul").html(str1);
+			/*$(".list_first:even").find("ul").html(str);
+   $(".list_first:odd").find("ul").html(str1);*/
 			$(this).find("ul").show();
 
 			$(this).on("mouseout", function () {
@@ -159,10 +175,4 @@ $(function () {
 			$(this).find(".bgt").css("background-position-x", "-52px");
 		});
 	});
-
-	//获取商品或列表
-	/*$.getJSON("http://datainfo.duapp.com/shopdata/getGoods.php?callback=?",function(data){
- 	console.log(data);
- 	//console.log(JSON.parse(data));
- })*/
 });

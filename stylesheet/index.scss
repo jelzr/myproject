@@ -391,13 +391,19 @@ li.change{
 }
 
 //商品列表分类
-#list{
+#banner_1{
+  position: relative;
+}
+#list{ 
     width: 198px;
-    height: 411px;
+    height: 405px;
     border: 1px solid #E3E3E5;
+    border-top: 0;
     float: left;
     background: rgb(245, 245, 245);
-    position: relative;
+    position: absolute;
+    left: 0;
+    top: 0; 
     li.list_first{
         display: block;
         width: 178px;
@@ -406,7 +412,7 @@ li.change{
         font-size: 12px;
     }
 }
-.list_title{
+.list_title{ 
     width: 178px;
     height: 20px;
     border-bottom: 6px;
@@ -496,7 +502,7 @@ li.list_hover{
                 width: 990px;
                 height: 480px;
                 overflow: hidden;
-                
+                float: right;
                 position: relative;
                 #_ul{               
                 height: 480px;
