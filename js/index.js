@@ -148,11 +148,11 @@ $.get("http://datainfo.duapp.com/shopdata/getclass.php",function(data){
 	var str1 = "";
 	for(var i = 0;i<data.length;i++){
 		//console.log(data[i].className);	  
-		str+='<li><a href="list.html?classID='+data[i].classID+'">'+data[i].className+'</a></li>'
+		str+='<li><a href="shop_list.html?classID='+data[i].classID+'">'+data[i].className+'</a></li>'
 		  
 	}    
 	for(var i =data.length-1;i>=0;i--){	  
-		str1+='<li><a href="list.html?classID='+data[i].classID+'">'+data[i].className+'</a></li>'
+		str1+='<li><a href="shop_list.html?classID='+data[i].classID+'">'+data[i].className+'</a></li>'
 		  
 	} 
 		
@@ -177,6 +177,36 @@ $.get("http://datainfo.duapp.com/shopdata/getclass.php",function(data){
 
  
 })  
+
+
+//首页-----------------------------------------------
+
+
+var classid = location.search.split("=")[1];
+$.getJSON("http://datainfo.duapp.com/shopdata/getGoods.php?callback=?",{classID:classid},function(data){
+	//console.log(data);
+	var str = "";
+	
+	for(var i=5;i<9;i++){
+		str += `<li><a  href="shop_list.html?classID="${data[i].goodsID}"><img src='${data[i].goodsListImg}' /></a></li>`
+		
+	} 
+	//console.log(str); 
+	$(".m1_2").html(str);
+	
+	
+})
+
+
+
+
+
+
+
+
+
+
+
 
 
 })

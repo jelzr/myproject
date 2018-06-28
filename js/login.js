@@ -178,6 +178,7 @@ $(function(){
 		$("#rg_psw_mobile1").css("border-color","#e3e2e2");
 		$("#rg_psw_xinxi").hide();
 		$("#rg_ass_xinxi").hide(); 
+		$("#rg_1,#rg_2,#rg_3,#rg_4,#rg_5").val("");
 		$("#rg_1").on("blur", function () {
 				$("#rg_ass_xinxi").show();
 				$("#rg_ass").css("border-color","red");		
@@ -227,6 +228,7 @@ $(function(){
 		$("#rg_psw_mobile1").css("border-color","#e3e2e2");
 		$("#rg_psw_xinxi").hide();  
 		$("#rg_ass_xinxi").hide();
+		$("#rg_1,#rg_2,#rg_3,#rg_4,#rg_5").val("");
 		
 	})
 })

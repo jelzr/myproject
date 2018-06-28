@@ -301,12 +301,14 @@ li.change{
     font-size: 11px;
     margin-top:20px ;
     #cart{
+        display: block;
         width: 146px;
         height: 33px;
         line-height: 33px;
         text-align: center;
         border: 1px solid #E3E3E5;
         cursor:pointer;
+        background: white;
         span:nth-of-type(1){
                 display: block;
                 float: left;
@@ -598,12 +600,21 @@ li.list_hover{
         border:1px #d1d3d4 solid;
         padding: 24px 0 20px 24px;
         box-sizing: border-box;
+        
         ul.m1_2{
             float: left;
             li{
                 float: left;
                 margin-right: 22px;
+                img{
+                display: block;
+                float: left;
+                width: 267px;
+                height: 321px;
+                float: left;
             }
+            }
+            
         }
         ul.main1_lunbo1{
             margin-top: 10px;

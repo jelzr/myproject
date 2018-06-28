@@ -8,7 +8,9 @@
 		<script src="js/index.js" type="text/javascript" charset="utf-8"></script>
 		<link rel="stylesheet" type="text/css" href="css/index.css"/>
 		<script src="js/other.js" type="text/javascript" charset="utf-8"></script>
+		<script src="js/cart.js" type="text/javascript" charset="utf-8"></script> 
 		<link rel="stylesheet" type="text/css" href="css/xiangqing.css"/> 
+		<script src="https://cdn.bootcss.com/jquery-cookie/1.4.1/jquery.cookie.js"></script>
 	</head>  
 	<body>
 		<div id="top">
@@ -35,7 +37,7 @@
 						<li><a href="login_psw.html">登录</a></li>
 						<li><a href="regist.html">注册</a></li>
 						<li class="change">
-							<a href="" >我的优购
+							<a href="index.html" >我的优购
 							<strong></strong>								
 							</a>
 							<ul id="shoucang">
@@ -64,7 +66,7 @@
 			
 		</div>
 		<div id="logo">
-			<a href=""><img src="img/logo.jpg"/></a>
+			<a href="index.html"><img src="img/logo.jpg"/></a>
 			<div id="sousuo">
 				<form action="" method="get">	
 					
@@ -90,11 +92,13 @@
 				</ul>
 			</div>
 			<div id="gwc">
-				<div id="cart">
+				<a href="cart.html " id="cart">
 					<span></span>
-					购物车(<strong>0</strong>)件
+					购物车(
+					<strong class="dt_cart">0</strong>
+					)件
 					<span></span>
-				</div>
+					</a>
 				<a href="">百丽国际旗下购物网站</a>
 			</div>
 			
@@ -225,7 +229,8 @@
 			<strong>￥666</strong> -->
 			<div id="cart_1">
 				<!--<a href="">立即购买</a>-->
-				<input type="button" name=".cart_2" id=".cart_2" value="加入购物车" />
+				<input type="button" name="cart_2" id="cart_2" value="加入购物车" />
+				<span></span>
 			</div>
 		</div>
 	</div>	

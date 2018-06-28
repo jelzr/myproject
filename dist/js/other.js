@@ -14,7 +14,7 @@ $(function () {
 		});
 	});
 
-	//商品列表
+	//商品列表 
 
 	/*$.getJSON("http://datainfo.duapp.com/shopdata/getGoods.php",{},function(data){
  	console.log(data);
@@ -25,7 +25,7 @@ $(function () {
 
 	var classid = location.search.split("=")[1];
 	$.getJSON("http://datainfo.duapp.com/shopdata/getGoods.php?callback=?", { classID: classid }, function (data) {
-		console.log(data);
+		//console.log(data);
 		var str = "";
 		//console.log(JSON.parse(data));
 		for (var i = 0; i < data.length; i++) {
@@ -45,76 +45,74 @@ $(function () {
 
 		var str = "<img src=\"" + data[0].goodsListImg + "\" class=\"zoom_img\"/>";
 
-		var str1 = "<h1>" + data[0].goodsName + "</h1>";
-
-		var str2 = "<strong>\uFFE5" + data[0].price + "</strong>";
+		var str1 = "<h1><a href=\"\">" + data[0].goodsName + "</a></h1><strong>\uFFE5" + data[0].price + "</strong>";
 
 		$(".dt_img").append(str);
-		$(".dt_img1").append(str);
-		//$("").html(str);
-		$(".dt_right").append(str1);
-		$(".dt_right").append(str2);
+		$(".dt_img1").html(str);
+		$("#cart_1").before(str1);
 
-		$("input:button").click(function () {
+		$("#cart_2").click(function () {
 			$.get("http://datainfo.duapp.com/shopdata/updatecar.php", { userID: $.cookie("username"), goodsID: data[0].goodsID }, function (data) {
 				console.log(data);
 				if (data == 0) {
-					alert("添加失败");
+					$("#cart_1").find("span").text("添加失败");
 				}
 				if (data == 1) {
-					alert("添加成功");
+
+					$("#cart_1").find("span").text("添加成功");
 				}
 			});
 		});
 
-		//						oBox2 = document.getElementsByClassName("dt_img1")[0],
-		//				oImg = oBox2.firstElementChild;
-		//				console.log(oBox2);
-		//				console.log(oImg);
+		//商品详情放大镜-------------------------------获取DOM元素需要放到回调函数里面
+
+
+		var oBox = document.getElementById("dt_left"),
+		    oBox1 = document.getElementsByClassName("dt_img")[0],
+		    oZoom = document.getElementById("zoom"),
+		    oBox2 = document.getElementsByClassName("dt_img1")[0],
+
+		//oImg = document.getElementsByClassName("zoom_img")[0];
+
+		oImg = oBox2.children[0];
+		//console.log(oBox1,oBox2);
+		oBox1.onmouseover = function () {
+			oZoom.style.display = "block";
+			oBox2.style.display = "block";
+		};
+		oBox1.onmousemove = function (e) {
+
+			var evt = e || event;
+			var x = evt.pageX - oBox.offsetLeft;
+			var y = evt.pageY - oBox.offsetTop;
+
+			var _left = x - oZoom.offsetWidth / 2;
+			var _top = y - oZoom.offsetHeight / 2;
+			if (_left <= 0) {
+				_left = 0;
+			}
+			if (_top <= 0) {
+				_top = 0;
+			}
+			if (_left >= oBox1.offsetWidth - oZoom.offsetWidth) {
+				_left = oBox1.offsetWidth - oZoom.offsetWidth;
+			}
+			if (_top >= oBox1.offsetHeight - oZoom.offsetHeight) {
+
+				_top = oBox1.offsetHeight - oZoom.offsetHeight;
+			}
+			oZoom.style.left = _left + "px";
+			oZoom.style.top = _top + "px";
+
+			oImg.style.left = -oZoom.offsetLeft / oBox1.offsetWidth * oImg.offsetWidth + "px";
+			oImg.style.top = -oZoom.offsetTop / oBox1.offsetHeight * oImg.offsetHeight + "px";
+		};
+
+		oBox1.onmouseout = function () {
+			oZoom.style.display = "none";
+			oBox2.style.display = "none";
+		};
 	});
-	//商品详情放大镜-------------------------------
-	var oBox = document.getElementById("dt_left"),
-	    oBox1 = document.getElementsByClassName("dt_img")[0],
-	    oZoom = document.getElementById("zoom"),
-	    oBox2 = document.getElementsByClassName("dt_img1")[0],
-	    oImg = document.getElementsByClassName("zoom_img");
 
-	oBox1.onmouseover = function () {
-		oZoom.style.display = "block";
-		oBox2.style.display = "block";
-	};
-	oBox1.onmousemove = function (e) {
-
-		var evt = e || event;
-		var x = evt.pageX - oBox.offsetLeft;
-		var y = evt.pageY - oBox.offsetTop;
-
-		var _left = x - oZoom.offsetWidth / 2;
-		var _top = y - oZoom.offsetHeight / 2;
-		if (_left <= 0) {
-			_left = 0;
-		}
-		if (_top <= 0) {
-			_top = 0;
-		}
-		if (_left >= oBox1.offsetWidth - oZoom.offsetWidth) {
-			_left = oBox1.offsetWidth - oZoom.offsetWidth;
-		}
-		if (_top >= oBox1.offsetHeight - oZoom.offsetHeight) {
-
-			_top = oBox1.offsetHeight - oZoom.offsetHeight;
-		}
-		oZoom.style.left = _left + "px";
-		oZoom.style.top = _top + "px";
-
-		oImg.style.left = -oZoom.offsetLeft / oBox1.offsetWidth * oImg.offsetWidth + "px";
-		oImg.style.top = -oZoom.offsetTop / oBox1.offsetHeight * oImg.offsetHeight + "px";
-		console.log(_left);
-		console.log(_top);
-	};
-
-	/*oBox1.onmouseout = function (){
- 	oZoom.style.display = "none";
- 	oBox2.style.display = "none";
- }*/
+	/**/
 });

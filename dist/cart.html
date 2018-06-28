@@ -4,10 +4,12 @@
 		<meta charset="UTF-8">
 		<title>优购网—用户手机号登录</title>
 		<script src="js/jquery-1.11.0.js" type="text/javascript" charset="utf-8"></script>
-		<script src="js/login.js" type="text/javascript" charset="utf-8"></script>
-		
+		<script src="js/login.js" type="text/javascript" charset="utf-8"></script>		
 		<link rel="stylesheet" type="text/css" href="css/login.css"/> 
-		<link rel="stylesheet" type="text/css" href="css/xiangqing.css"/> 
+		<link rel="stylesheet" type="text/css" href="css/xiangqing.css"/>
+		<script src="https://cdn.bootcss.com/jquery-cookie/1.4.1/jquery.cookie.js"></script>
+		
+		<script src="js/cart.js" type="text/javascript" charset="utf-8"></script>
 	</head>
 	<body> 
 		 
@@ -72,17 +74,17 @@
 		<div id="lg_logo_wrap"> 
 			<div id="lg_logo">
 				<a href="index.html"><img src="img/login-logo.png"/></a>
-				<p>用户登录</p>
+				<p></p>
 			</div>
 		</div>
 
 <!--cart-->
 <div id="cart_wrap">
 	<table class="cart_list">
-		<thead>
+		<thead> 
 			<tr>
 				<th>
-					<input type="checkbox" id="" value="" />全选
+					<input type="checkbox" checked="checked" />全选
 				</th>
 				<th>商品名称</th>
 				<th>颜色尺码</th>
@@ -92,44 +94,34 @@
 				<th>操作</th>
 			</tr>
 		</thead>
-		<tbody> 
-			
-			
-			<tr>
-				<td colspan="7">
-					<dl>
-						<dd><input type="checkbox" /></dd>
-						<dd><img src="img/main6-2-1.jpg" alt="" /></dd>
-						<dd><div class="shop_title">Belle/百丽夏季专柜同款黑色羊绒皮女皮凉鞋R5F1DBL7</div></dd>
-						<dd>11</dd>
-						<dd><input type="text" name="" id="num" value="" /></dd>
-						<dd>22</dd>
-						<dd><input type="button" name="" id="" value="删除" /></dd>
-					</dl>
+		<tbody id="tbody"> 			
+			<!--<tr>
+				<td>						
+					<input type="checkbox" />
 				</td>
-			</tr>
-			
-			<tr>
-				<td colspan="7">
-					<dl>
-						<dd><input type="checkbox" /></dd>
-						<dd><img src="img/main6-2-1.jpg" alt="" /></dd>
-						<dd><div class="shop_title">Belle/百丽夏季专柜同款黑色羊绒皮女皮凉鞋R5F1DBL7</div></dd>
-						<dd>11</dd>
-						<dd><input type="text" name="" id="num" value="" /></dd>
-						<dd>22</dd>
-						<dd><input type="button" name="" id="" value="删除" /></dd>
-					</dl>
+				<td>					
+					<a	href="" class="shop_title">
+						<img src="img/main6-2-1.jpg" alt="" />
+						Belle/百丽夏季专柜同款黑色羊绒皮女皮凉鞋R5F1DBL7
+					</a>
 				</td>
+				<td>
+					<p>颜色：石灰白</p>
+					<p>尺码：37</p>
+					
+				</td>				
+				<td>69</td>
+				<td>
+					<span> -  </span>
+					<input type="text" name="" id="num" value="1" />
+					<span> + </span>
+				</td>
+				<td>69</td>
+				<td>
+					<dd><input type="button" name="" id="" value="删除" /></dd>	
+				</td>				
 			</tr>
-			
-			
-			
-			
-			
-			
-			
-			
+			-->
 			
 			
 			
@@ -137,8 +129,20 @@
 		</tbody>
 		
 	</table>
+	<div class="cart_bottom">
+		
+		
+		<a href="#">去结算</a>
+		<strong>￥<span class="zj_price">0</span>元</strong>
+		<strong>总计：共（<span id="shop_total">0</span>）件</strong>
+		
+	</div>
 </div>
 
-
+<p class="login_footer">Copyright © 2011-2014 Yougou Technology Co., Ltd.
+	<a href=""> 粤ICP备09070608号-4 </a>
+	增值电信业务经营许可证：
+	<a href="">粤 B2-20090203</a>
+</p>
 	</body>
 </html>
